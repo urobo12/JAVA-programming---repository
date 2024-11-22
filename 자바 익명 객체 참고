@@ -1,0 +1,66 @@
+
+<익명 객체>
+
+package ch10;
+
+public class Car {
+	private Tire tire1 = new Tire();
+	
+	private Tire tire2 = new Tire() {
+		public void roll() {
+			System.out.println("익명 자식 Tire 객체1이 굴러갑니다.");
+		}; //; 사용
+	}; //; 사용
+	
+	public void run1() {
+		tire1.roll();
+		tire2.roll();
+	}
+	
+	public void run2() {
+		Tire tire = new Tire() {
+			public void roll() {
+				System.out.println("익명의 자식 Tire 객체2가 굴러갑니다.");
+			}
+		}; //; 사용
+		tire.roll();
+	}
+	
+	public void run3(Tire tire) {
+		tire.roll();
+	}
+}
+
+그룹으로 묶이는 것이 아닌 라인으로 묶일 때에는 ;을 사용한다.
+
+
+
+
+package ch10;
+
+public class CarExample {
+	public static void main(String[]args) {
+		Car car = new Car();
+		
+		car.run1();
+		
+		car.run2();
+		
+		car.run3(new Tire(){
+			public void roll( ) {
+				System.out.println("익명 자식 Tire 객체3이 굴러갑니다.");
+			}
+		});
+	}
+}
+
+
+
+package ch10;
+
+public class Tire {
+	public void roll() {
+		System.out.println("일반 타이어가 굴러갑니다.");
+	}
+
+}
